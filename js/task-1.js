@@ -1,8 +1,37 @@
-function makeTransaction(quantity, pricePerDroid) {
-  const totalPrice = quantity * pricePerDroid;
-  return `You ordered ${quantity} droids worth ${totalPrice} credits!`;
+// let counter = 0;
+// function handleClick(event) {
+//   counter += 1;
+//   count.textContent = counter;
+// }
+
+// clickBtn.onclick = handleClick;
+
+// clickBtn.onmouseleave = function () {
+//   clickBtn.style.background = '#e2e';
+// };
+
+// const functionResult = handleClick('click', 5);
+// console.log(functionResult);
+
+function calcBmi(weight, height) {
+  // const bmi = weight / height ** 2;
+  // const weightToNumber = Number.parseFloat(weight);
+  const normalizeWeight = Number(replaceToDot(weight));
+  const normalizeHeight = Number(replaceToDot(height));
+  // const powHeight = Math.pow(height, 2);
+
+  const bmi = normalizeWeight / normalizeHeight ** 2;
+  // return Math.round(bmi * 10) / 10;
+  return roundDecimal(bmi, 3);
 }
 
-console.log(makeTransaction(5, 3000)); // "You ordered 5 droids worth 15000 credits!"
-console.log(makeTransaction(3, 1000)); // "You ordered 3 droids worth 3000 credits!"
-console.log(makeTransaction(10, 500)); // "You ordered 10 droids worth 5000 credits!"
+function replaceToDot(value) {
+  return value.replace(',', '.');
+}
+
+function roundDecimal(value, num = 1) {
+  return Math.round(value * 10 ** num) / 10 ** num;
+}
+
+const bmi = calcBmi('88,3', '1.75');
+console.log(bmi);
